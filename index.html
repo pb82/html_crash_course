@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>My Website</title>
+    <meta name="description" content="Personal Blog of bla bla">
+    <style>
+        body {
+            height: 2000px;
+        }
+
+        div.content {
+            height: 50%;
+            width: 100px;
+            background-color: burlywood;
+        }
+    </style>
+    <script>
+        const minWidth = 100;
+        const factor = 1;
+
+        function getScrollPercent() {
+            var h = document.documentElement,
+                b = document.body,
+                st = 'scrollTop',
+                sh = 'scrollHeight';
+            return (h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight) * 100;
+        }
+
+        function handler() {
+            const el = document.getElementById("content");
+
+            let width = (getScrollPercent() / (100 / factor)) * document.body.clientWidth;
+
+            if (width < minWidth) width = minWidth;
+            if (width > document.body.clientWidth) width = document.body.clientWidth;
+
+            el.style.width = "" + width + "px";
+        }
+    </script>
+</head>
+<body onscroll="handler()" id="body">
+<h1>Headline</h1>
+<div class="content" id="content">
+</div>
+</body>
+</html>
