@@ -19,6 +19,10 @@
         const minWidth = 100;
         const factor = 1;
 
+        window.onresize = function () {
+            handler();
+        }
+
         function getScrollPercent() {
             var h = document.documentElement,
                 b = document.body,
